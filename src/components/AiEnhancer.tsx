@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { VideoData, Language } from '../types';
-import { translations } from '../utils/translations';
-import { Sparkles, Wand2, Sliders, Play, CheckCircle2, Download, RefreshCw, Zap } from 'lucide-react';
+import { translations } from '../i18n/translations';
+import { Sparkles, Wand2, CheckCircle2, Download, RefreshCw } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface AiEnhancerProps {
@@ -15,13 +15,11 @@ export const AiEnhancer: React.FC<AiEnhancerProps> = ({ lang, currentVideo }) =>
   const [hdr, setHdr] = useState(true);
   const [faceEnhance, setFaceEnhance] = useState(true);
   const [audioBoost, setAudioBoost] = useState(true);
-  const [stabilization, setStabilization] = useState(true);
 
   const [processing, setProcessing] = useState(false);
   const [progress, setProgress] = useState(0);
   const [stepLabel, setStepLabel] = useState('');
   const [isEnhanced, setIsEnhanced] = useState(false);
-  const [sliderPos, setSliderPos] = useState(50);
 
   const t = translations[lang];
 
@@ -66,7 +64,6 @@ export const AiEnhancer: React.FC<AiEnhancerProps> = ({ lang, currentVideo }) =>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* لوحة خيارات التخصيص */}
         <div className="lg:col-span-5 space-y-6 p-6 rounded-3xl bg-[#0a0f1d] border border-cyan-500/30">
           <div>
             <label className="text-xs font-bold text-slate-300 block mb-2">1. اختيار الدقة المراد رفعها (Resolution)</label>
@@ -137,7 +134,6 @@ export const AiEnhancer: React.FC<AiEnhancerProps> = ({ lang, currentVideo }) =>
           </button>
         </div>
 
-        {/* المعاينة والمقارنة التفاعلية */}
         <div className="lg:col-span-7 flex flex-col justify-between p-6 rounded-3xl bg-[#0a0f1d] border border-cyan-500/30">
           <div className="relative aspect-video rounded-2xl overflow-hidden bg-black border border-slate-800 flex items-center justify-center">
             {processing ? (
